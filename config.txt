@@ -1,0 +1,58 @@
+## Configuration file for EcoLight/HydroLight
+#
+## Values list:
+# iop:          flag for optical(1) or geometric(0) depth in meters.
+# nznom:        is the number of depths where output is desired (auto-calculated)
+# zetanom:      are the depths (max 100 values) where output is desired. zetanom (1) = 0.0, ..., zetanom (nznom) = zmax
+# chl:          chlorophyll concentration (mg/m^3).
+#               values: constant value [0.50], or argument with name of file within pairs of depth and Chl values
+# cdom:         cdom concentration (gm/m^3).
+#               values: constant value [0.50], or argument with name of file within pairs of depth and CDOM values
+# mineral:      mineral concentration (gm/m^3).
+#               values: constant value [0.50], or argument with name of file within pairs of depth and mineral values
+# ibotm:        is a flag for the type of bottom boundary.
+#               ibotm = 0 (water column is infinitely deep)
+#               ibotm = 1 (the bottom is an opaque Lambertian reflecting surface located at depth zmax. The irradiance
+#                       reflectance of the bottom is taken to be 0 <= rflbot <= 1
+#               ibotm = 2 (the bottom is an opaque Lambertian reflecting surface located at depth zmax. The
+#                       wavelength-dependent irradiance reflectance of the bottom will be read from a HE52 standard
+#                       format file of bottom reflectance data.
+# rflbot:       irradiance reflectance of the bottom, is always read, but is used only if ibotm = 1.
+# RbottomFile:  standard-format bottom reflectance data file (read by routine rbottom). Files:
+#               "dummyR.bot", "avg_clean_seagrass.txt", "avg_coral.txt", "avg_dark_sediment.txt", "avg_hardpan.txt",
+#               "avg_kelp.txt", "avg_macrophyte.txt", "avg_ooid_sand.txt", "avg_seagrass.txt", "avg_turf_algae.txt",
+#               "brown_algae.txt", "coral_sand.txt", "green_algae.txt", "red_algae.txt"
+#               all bottom files -> RbottomFile = "*"
+#               some bottom files -> RbottomFile = "dummyR.bot", "avg_dark_sediment.txt", "avg_macrophyte.txt",
+# cloud:        is the cloud cover, 0.0 (clear sky) <= cloud <= 1.0 (solid overcast)
+# suntheta:     is the solar zenith angle in degrees, 0.0 (sun at the zenith) <= suntheta <= 90.0 (sun at the horizon)
+# windspd:      wind speed in meters per second at an anemometer height of 12 m.
+# temp:         the water temperature
+in deg C, 0.0 <= temp <= 40.0
+# salinity:     the salinity in PSU, 0.0 <= salinity <= 100
+#
+## How to enter values:
+#
+# 1.- Uncomment line of variable
+#
+# 2.- Specify values after equals (=)
+#   2.1.- Array of values using brackets separated by spaces
+#   [0.00 0.20 0.40 0.60 0.80 1.00]
+#
+#   2.2.- A range of values using minimum value, maximum value and step without brackets separated by spaces
+#   0 1 0.20
+#
+## Values:
+iop = [0]
+zetanom = [1.25]
+chl = [5]
+cdom = [3 6 9]
+mineral = [1]
+ibotm = [2]
+rflbot = [0]
+RbottomFile = "avg_clean_seagrass.txt"
+windspd = [0]
+temp = [10]
+salinity = [0]
+cloud = [0 1]
+suntheta = [0 45]
